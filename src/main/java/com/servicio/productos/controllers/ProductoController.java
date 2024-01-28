@@ -40,10 +40,18 @@ public class ProductoController {
         producto.setPort(port);
 
         // simulando la falla para probar corto circuito de Hytrix
-        boolean ok = false;
+        /*boolean ok = false;
         if (!ok) {
             throw new RuntimeException("No se pudo cargar el Producto");
-        }
+        }*/
+
+        //simular un timeout con Thread.sleep
+        /*try {
+            Thread.sleep(2000L);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }*/
+
         return producto;
     }
 }
