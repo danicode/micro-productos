@@ -38,6 +38,12 @@ public class ProductoController {
         Producto producto = productoService.findById(id);
         //producto.setPort(Integer.parseInt(env.getProperty("local.server.port")));
         producto.setPort(port);
+
+        // simulando la falla para probar corto circuito de Hytrix
+        boolean ok = false;
+        if (!ok) {
+            throw new RuntimeException("No se pudo cargar el Producto");
+        }
         return producto;
     }
 }
