@@ -46,11 +46,11 @@ public class ProductoController {
         }*/
 
         //simular un timeout con Thread.sleep
-        /*try {
+        try {
             Thread.sleep(2000L);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
-        }*/
+        }
 
         return producto;
     }
