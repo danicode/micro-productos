@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 @RestController // una de las cosas que hace esta anotacion es convertir a json lo q retorna el metodo handler
@@ -34,7 +35,7 @@ public class ProductoController {
     }
 
     @GetMapping("/ver/{id}")
-    public Producto detalle(@PathVariable Long id) {
+    public Producto detalle(@PathVariable Long id) throws InterruptedException {
         Producto producto = productoService.findById(id);
         producto.setPort(Integer.parseInt(env.getProperty("local.server.port")));
         //producto.setPort(port);
@@ -46,10 +47,19 @@ public class ProductoController {
         }*/
 
         //simular un timeout con Thread.sleep
-        try {
+        /*try {
             Thread.sleep(2000L);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
+        }*/
+
+        // Probar circuit breaker con Resilience4J
+        if (id.equals(10L)) {
+            throw new IllegalStateException("Producto no encontrado!");
+        }
+
+        if (id.equals(7L)) {
+            TimeUnit.SECONDS.sleep(5L);
         }
 
         return producto;
