@@ -1,7 +1,7 @@
 package com.servicio.productos.models.service.impl;
 
 import com.servicio.productos.models.dao.ProductoDao;
-import com.servicio.productos.models.entity.Producto;
+import com.servicio.commons.models.entity.Producto;
 import com.servicio.productos.models.service.IProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

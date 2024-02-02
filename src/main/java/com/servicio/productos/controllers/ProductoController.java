@@ -1,6 +1,6 @@
 package com.servicio.productos.controllers;
 
-import com.servicio.productos.models.entity.Producto;
+import com.servicio.commons.models.entity.Producto;
 import com.servicio.productos.models.service.IProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.beans.factory.annotation.Value;
