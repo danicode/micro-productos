@@ -33,6 +33,15 @@ public class ProductoService implements IProductoService {
     }
 
     @Override
+    public Producto update(Producto producto, Long id) {
+        Producto productoDb = findById(id);
+
+        productoDb.setNombre(producto.getNombre());
+        productoDb.setPrecio(producto.getPrecio());
+        return save(productoDb);
+    }
+
+    @Override
     @Transactional
     public void deleteById(Long id) {
         productoDao.deleteById(id);

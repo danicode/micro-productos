@@ -68,18 +68,12 @@ public class ProductoController {
     @ResponseStatus(HttpStatus.CREATED)
     public Producto crear(@RequestBody Producto producto) {
         return productoService.save(producto);
-
     }
 
     @PutMapping("/editar/{id}")
     @ResponseStatus(HttpStatus.CREATED)
     public Producto editar(@RequestBody Producto producto, @PathVariable Long id) {
-        Producto productoDb = productoService.findById(id);
-
-        productoDb.setNombre(producto.getNombre());
-        productoDb.setPrecio(producto.getPrecio());
-
-        return productoService.save(productoDb);
+        return productoService.update(producto, id);
     }
 
     @DeleteMapping("/eliminar/{id}")
